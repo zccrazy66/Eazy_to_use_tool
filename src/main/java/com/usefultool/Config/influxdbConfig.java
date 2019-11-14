@@ -1,19 +1,12 @@
-package com.influxdb.Config;
+package com.usefultool.Config;
 
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.influxdb.BatchOptions;
-import org.influxdb.InfluxDB;
-import org.influxdb.InfluxDBFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.awt.*;
-import java.util.function.BiConsumer;
 
 @Slf4j
 @Getter

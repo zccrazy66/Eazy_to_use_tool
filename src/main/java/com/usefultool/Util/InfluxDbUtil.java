@@ -1,4 +1,4 @@
-package com.influxdb.Util;
+package com.usefultool.Util;
 
 
 import lombok.Data;
@@ -10,6 +10,7 @@ import org.influxdb.dto.Query;
 import org.influxdb.dto.QueryResult;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Data
 @Slf4j
@@ -19,7 +20,7 @@ public class InfluxDbUtil {
     private static String username = "zczc";//用户名
     private static String password = "123456";//密码
     private static String database = "test";//数据库
-    private static String measurement = "cpu";//表名
+    private static String measurement = "www";//表名
 
     private InfluxDB influxDB;
 
@@ -75,10 +76,11 @@ public class InfluxDbUtil {
      * @param tags 标签
      * @param fields 字段
      */
-    public void insert(Map<String, String> tags, Map<String, Object> fields){
+    public void insert(Map<String, String> tags, Map<String, Object> fields, long timeToSet, TimeUnit precisionToSet){
         Point.Builder builder = Point.measurement(measurement);
         builder.tag(tags);
         builder.fields(fields);
+        builder.time(timeToSet, precisionToSet);
 
         influxDB.write(database, "", builder.build());
     }

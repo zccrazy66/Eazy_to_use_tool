@@ -1,8 +1,15 @@
 server:
   port: 3279
 
-
 spring:
   influx:
     url: http://localhost:8086/
     database: test
+
+  redis:
+    host: 127.0.0.1
+    prot: 6379
+    database: 0
+    password:
+
+
