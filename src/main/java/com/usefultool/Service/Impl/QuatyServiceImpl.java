@@ -8,29 +8,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class QuatyServiceImpl implements QuatyService {
     private InfluxDbUtil influxDB;
 
     @Override
-    public void intoDb(String info, String df, Object code1, Object code2) {
-
+    public void intoDb(Map<String,String> tags, Map<String,Object> fields,long time, TimeUnit precisionToSet) {
         influxDB = InfluxDbUtil.setUp();
-
-        Map<String,String> tags = new HashMap<>();
-        Map<String,Object> fields = new HashMap<>();
-
-        tags.put("tag1", info);
-        tags.put("tag2", df);
-
-        fields.put("field1",code1);
-        fields.put("field2",code2);
-//        fields.put("TIMAMPEST", df.format(String.valueOf(new Date())));
-        influxDB.insert(tags, fields);
-
-//        System.out.println(influxDB.query("select * from cpu"));
-
+        influxDB.insert(tags, fields,time, TimeUnit.MILLISECONDS);
     }
 
     @Override

@@ -8,8 +8,6 @@ import lombok.Setter;
 @Setter
 public class test_redis {
 
-    public  static final String Table = "t_user";
-
     private String name;
     private String address;
     private Integer age;

@@ -20,7 +20,7 @@ public class InfluxDbUtil {
     private static String username = "zczc";//用户名
     private static String password = "123456";//密码
     private static String database = "test";//数据库
-    private static String measurement = "www";//表名
+    private static String measurement = "cz";//表名
 
     private InfluxDB influxDB;
 
@@ -80,7 +80,9 @@ public class InfluxDbUtil {
         Point.Builder builder = Point.measurement(measurement);
         builder.tag(tags);
         builder.fields(fields);
-        builder.time(timeToSet, precisionToSet);
+        if (0 != timeToSet){
+            builder.time(timeToSet,precisionToSet);
+        }
 
         influxDB.write(database, "", builder.build());
     }

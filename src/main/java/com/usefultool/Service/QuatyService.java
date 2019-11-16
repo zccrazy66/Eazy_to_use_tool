@@ -2,9 +2,12 @@ package com.usefultool.Service;
 
 import org.influxdb.dto.QueryResult;
 
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 public interface QuatyService {
 
-    void intoDb(String tag1, String tag2, Object field1,  Object field2);
+    void intoDb(Map<String,String> tags, Map<String,Object> fields, long time, TimeUnit precisionToSet);
 
     QueryResult getmsg(String command);
 
