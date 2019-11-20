@@ -79,6 +79,7 @@ class InfluxDBApplicationTests {
     void get_from_influxdb(){
         // 查询
         QueryResult result = quatyService.getmsg("select test_double from cz");
+
         // 取得结果list
         List<QueryResult.Result> list = result.getResults();
         // 获取想要的value 这边拿一个链表，在influxdb中是以string类型存储的
@@ -98,7 +99,7 @@ class InfluxDBApplicationTests {
     // 第一次测试influxdb
     void test_influxDB() {
 
-
+        System.out.println("hehe");
 //        quatyService.intoDb("0","1",2,9);
 //        System.out.println(Arrays.toString(db));
 //        long startTime =  System.currentTimeMillis();

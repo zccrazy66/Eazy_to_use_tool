@@ -1,6 +1,7 @@
 package com.usefultool.Config;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,9 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @Slf4j
-@Getter
-@Setter
-@ToString
+@Data
 @Configuration
 public class influxdbConfig {
 
@@ -26,6 +25,7 @@ public class influxdbConfig {
 
     @Value("${spring.influx.password:''}")
     private String influxPassword;
+
 
 //    @Bean
 //    public InfluxDBUtils influxDBUtils

@@ -20,7 +20,7 @@ public class InfluxDbUtil {
     private static String username = "zczc";//用户名
     private static String password = "123456";//密码
     private static String database = "test";//数据库
-    private static String measurement = "cz";//表名
+    private static String measurement = "SENSOR_DATA_TEST";//表名
 
     private InfluxDB influxDB;
 
@@ -37,13 +37,12 @@ public class InfluxDbUtil {
         InfluxDbUtil influxDbUtil = new InfluxDbUtil(username, password, openurl, database);
         influxDbUtil.influxDbBuild();
         influxDbUtil.createRetentionPolicy();
-//
-//   influxDB.deleteDB(database);
-//   influxDB.createDB(database);
+
         return influxDbUtil;
     }
 
     /**连接时序数据库；获得InfluxDB**/
+
     public InfluxDB influxDbBuild(){
         if(influxDB == null){
             influxDB = InfluxDBFactory.connect(openurl, username, password);
@@ -56,6 +55,7 @@ public class InfluxDbUtil {
      * 设置数据保存策略
      * defalut 策略名 /database 数据库名/ 30d 数据保存时限30天/ 1 副本个数为1/ 结尾DEFAULT 表示 设为默认的策略
      */
+
     public void createRetentionPolicy(){
         String command = String.format("CREATE RETENTION POLICY \"%s\" ON \"%s\" DURATION %s REPLICATION %s DEFAULT",
                 "defalut", database, "30d", 1);
@@ -67,6 +67,7 @@ public class InfluxDbUtil {
      * @param command 查询语句
      * @return
      */
+
     public QueryResult query(String command){
         return influxDB.query(new Query(command, database));
     }

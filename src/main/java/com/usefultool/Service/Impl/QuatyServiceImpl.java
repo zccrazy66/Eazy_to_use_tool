@@ -15,7 +15,7 @@ public class QuatyServiceImpl implements QuatyService {
     private InfluxDbUtil influxDB;
 
     @Override
-    public void intoDb(Map<String,String> tags, Map<String,Object> fields,long time, TimeUnit precisionToSet) {
+    public void intoDb(Map<String,String> tags, Map<String,Object> fields, long time, TimeUnit precisionToSet) {
         influxDB = InfluxDbUtil.setUp();
         influxDB.insert(tags, fields,time, TimeUnit.MILLISECONDS);
     }

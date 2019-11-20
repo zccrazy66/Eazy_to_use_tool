@@ -14,7 +14,6 @@ public class HttpServiceImpl implements HttpService {
     public Map<String, Object> rest_post(Map param) {
 
         // 先不用
-
         Map<String, Object> map = new HashMap<>();
 
         RestTemplate restTemplate = new RestTemplate();
